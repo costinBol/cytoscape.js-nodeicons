@@ -1,0 +1,152 @@
+<!DOCTYPE>
+
+<html>
+
+<head>
+  <title>cytoscape-nodeicons.js demo</title>
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+
+  <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <script src="https://cdnout.com/popper.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/cytoscape-popper@2.0.0/cytoscape-popper.js"></script>
+
+  <script src="cytoscape-nodeicons.js"></script>
+  <link rel="stylesheet" href="cytoscape-nodeicons.css" />
+
+
+
+
+  <style>
+    body {
+      font-family: helvetica neue, helvetica, liberation sans, arial, sans-serif;
+      font-size: 14px;
+    }
+
+    #cy {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 999;
+    }
+
+    h1 {
+      opacity: 0.5;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    #buttons {
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 99999;
+      margin: 1em;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      var cy = window.cy = cytoscape({
+        container: document.getElementById('cy'),
+
+        layout: {
+          name: 'grid',
+          rows: 2,
+          cols: 2
+        },
+
+        style: [
+          {
+            selector: 'node[name]',
+            style: {
+              'content': 'data(name)'
+            }
+          },
+
+          {
+            selector: 'edge',
+            style: {
+              'curve-style': 'bezier',
+              'target-arrow-shape': 'triangle'
+            }
+          },
+
+        ],
+
+        elements: {
+          nodes: [
+            {
+              data: {
+                id: 'j', name: 'Jerry',
+                icons: [
+                  {
+                    innerHTML: "<i class='fa fa-paperclip'></i>",
+                    onclick: (e) => console.log("Attach clicked"),
+                    tooltip: "Open attachments"
+                  },
+                  {
+                    innerHTML: "<i class='fa fa-file-download'></i>",
+                    onclick: (e) => console.log("Download clicked")
+                  },
+                ]
+              }
+            },
+            {
+              data: {
+                id: 'e', name: 'Elaine',
+                icons: [
+                  {
+                    innerHTML: "<i class='fa fa-paperclip'></i>",
+                    onclick: (e) => console.log("Attach clicked")
+                  },
+                  {
+                    innerHTML: "<i class='fa fa-file-download'></i>",
+                    onclick: (e) => console.log("Download clicked")
+                  },
+                  {
+                    innerHTML: "<i class='fa fa-link'></i>",
+                    onclick: (e) => console.log("Link clicked"),
+                    tooltip: "Open external link"
+                  }
+                ]
+              }
+            },
+            { data: { id: 'k', name: 'Kramer' } },
+            { data: { id: 'g', name: 'George' } }
+          ],
+          edges: [
+            { data: { source: 'j', target: 'e' } },
+            { data: { source: 'j', target: 'k' } },
+            { data: { source: 'j', target: 'g' } },
+            { data: { source: 'e', target: 'j' } },
+            { data: { source: 'e', target: 'k' } },
+            { data: { source: 'k', target: 'j' } },
+            { data: { source: 'k', target: 'e' } },
+            { data: { source: 'k', target: 'g' } },
+            { data: { source: 'g', target: 'j' } }
+          ]
+        }
+      });
+
+      var eh = cy.nodeicons({ showLogs: true });
+
+    });
+
+
+  </script>
+</head>
+
+<body>
+  <h1>cytoscape-nodeicons demo</h1>
+
+  <div id="cy"></div>
+
+</body>
+
+</html>
