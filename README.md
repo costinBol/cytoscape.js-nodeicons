@@ -6,7 +6,7 @@ Node icons for Cytoscape.js
 
 This extension allows node icons when hovering over node.
  
-TODO
+![Demo](./demo.gif)
  
 ## Dependencies
 
@@ -24,31 +24,30 @@ ES import:
 
 ```js
 import cytoscape from 'cytoscape';
-import nodetextedit from 'cytoscape-node-text-edit';
-
-cytoscape.use( nodetextedit );
+import nodeicons from 'cytoscape/cytoscape-nodeicons';
+cytoscape.use( nodeicons );
 ```
 
 CommonJS require:
 
 ```js
 let cytoscape = require('cytoscape');
-let nodetextedit = require('cytoscape-node-text-edit');
+let nodeicons = require('cytoscape-nodeicons');
 
-cytoscape.use( nodetextedit ); // register extension
+cytoscape.use( nodeicons ); // register extension
 ```
 
 AMD:
 
 ```js
-require(['cytoscape', 'cytoscape-node-text-edit'], function( cytoscape, nodetextedit ){
-  nodetextedit( cytoscape ); // register extension
+require(['cytoscape', 'cytoscape-nodeicons'], function( cytoscape, nodeicons ){
+  nodeicons( cytoscape ); // register extension
 });
 ```
 
 Plain HTML/JS has the extension registered for you automatically, because no `require()` is needed.
 ```js
-  <script src="cytoscape-node-text-edit.js"></script>
+  <script src="cytoscape-nodeicons.js"></script>
 ```
 
 ## Initialisation
@@ -64,19 +63,16 @@ let cy = cytoscape({
 
 // the default values of each option are outlined below:
 let defaults = {
-  selectAllText : false, // If true, selects all text when starting edit. Otherwise, selects last character.
-  backgroundColor: 'white', // Colour of background overlay
-  backgroundOpacity: 0.9, // Opacity of background overlay
-  nodeLabel: 'name', // Which node.data() property holds the label
-  showLogs: false, // Show debugging info in console
-  zIndex: 1000 // zIndex of editing overlay
+  verticalOffset: 0,
+  showLogs: false,
+  alwaysOn: false,
+  iconsPlacement: 'bottom',
+  icons: [] // Sample: [{innerHTML: '<i class="fa fa-paperclip"/>', style: 'color:red'}, {}]
 };
 
-
-let eh = cy.nodetextedit( defaults );
+let eh = cy.nodeicons( defaults );
 
 ```
-
  
 
 ## Build targets
