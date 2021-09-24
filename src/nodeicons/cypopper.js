@@ -40,6 +40,10 @@ function setupPopper() {
       if (icon.style) {
         iconDiv.style = icon.style;
       }
+      else{
+        log("Node render size:",node.renderedBoundingBox());
+      //  iconDiv.style = `font-size:${}px`;
+      }
       iconDiv.innerHTML = icon.innerHTML;
       if(icon.tooltip){
         iconDiv.title = icon.tooltip;
