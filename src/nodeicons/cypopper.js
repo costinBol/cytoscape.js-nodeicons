@@ -1,16 +1,9 @@
 const { log } = require("./logging");
-let popperEnabled = false;
 
 function setupPopper() {
   let { cy, options } = this;
   log("Seting up Popper", this);
-  if (popperEnabled) { return; }
-  
-
-  popperEnabled = true;
-
-  // example code for making your own handles -- customise events and presentation where fitting
-  // var popper;
+ 
   var popperNode;
   var popper;
   var popperDiv;
