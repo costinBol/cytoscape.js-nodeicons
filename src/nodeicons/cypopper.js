@@ -106,6 +106,9 @@ function setupPopper() {
   cy.on('mouseout', 'node', function (e) {
     removeHandle();
   });
+  cy.on('destroy', function (e) {
+    removeHandle();
+  });
 
   cy.on('tap', 'node', function (e) {
     console.log("cypopper - tap", e);
