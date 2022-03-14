@@ -52,7 +52,7 @@ function setupPopper() {
     }); 
 
     document.body.appendChild(popperDiv);
-
+    log("cypopper - creating popper with options: ", options);
     popper = node.popper({
       content: popperDiv,
       popper: {
@@ -72,6 +72,7 @@ function setupPopper() {
   }
 
   function removeHandle() {
+    log("cypopper - removeHandle", popper);
     if (popper) {
       popper.destroy();
       popper = null;
@@ -104,9 +105,11 @@ function setupPopper() {
     removeHandle();
   });
   cy.on('mouseout', 'node', function (e) {
+    log("cypopper - mouseout");
     removeHandle();
   });
   cy.on('destroy', function (e) {
+    log("cypopper - destroy");
     removeHandle();
   });
 
